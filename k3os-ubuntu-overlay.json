@@ -45,7 +45,8 @@
                 "set -x",
                 "tar xzvf /root/k3os-rootfs-arm.tar.gz --strip-components=1 -C /",
                 "rm -f /root/k3os-rootfs-arm.tar.gz",
-                "sync"
+                "sync",
+                "sed -i '1s/^/cgroup_memory=1 cgroup_enable=memory /' /boot/cmdline.txt"
             ]
         },
         {
