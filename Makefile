@@ -1,10 +1,13 @@
 .PHONY: build
 VERSION = v0.10.0
 
-images/ubuntu-20.04-preinstalled-server-arm64+raspi.img:
+images:
+	mkdir -p images
+
+images/ubuntu-20.04-preinstalled-server-arm64+raspi.img: images
 	curl -L http://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04-preinstalled-server-arm64+raspi.img.xz | unxz > $@
 
-images/k3os-rootfs-arm.tar.gz:
+images/k3os-rootfs-arm.tar.gz: images
 	rm -f $@
 	curl -L https://github.com/rancher/k3os/releases/download/$(VERSION)/k3os-rootfs-arm.tar.gz > $@
 
