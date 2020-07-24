@@ -33,7 +33,6 @@
         }
     ],
     "provisioners": [
-
         {
             "type": "file",
             "source": "/images/k3os-rootfs-arm.tar.gz",

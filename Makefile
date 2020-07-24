@@ -12,6 +12,6 @@ images/k3os-rootfs-arm.tar.gz: images
 	curl -L https://github.com/rancher/k3os/releases/download/$(VERSION)/k3os-rootfs-arm.tar.gz > $@
 
 k3os-ubuntu-overlay.img: k3os-ubuntu-overlay.json images/k3os-rootfs-arm.tar.gz images/ubuntu-20.04-preinstalled-server-arm64+raspi.img
-	docker-compose run packer_builder_arm build k3os-ubuntu-overlay.json
+	docker-compose run --rm packer_builder_arm build k3os-ubuntu-overlay.json
 
 build: k3os-ubuntu-overlay.img
