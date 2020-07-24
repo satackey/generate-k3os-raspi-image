@@ -1,0 +1,3 @@
+*.img
+/images
+k3os-system-config.yaml

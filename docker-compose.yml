@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  packer_builder_arm:
+    build: '.'
+    privileged: true
+    volumes:
+      - .:/build
+      - /build/images
+      - ./images:/images:ro
+      - /dev:/dev
+      - packer_cache:/root/packer_cache
+    environment:
+      - PACKER_CACHE_DIR=/root/packer_cache
+
+volumes:
+  packer_cache:
