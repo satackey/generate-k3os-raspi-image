@@ -6,8 +6,7 @@ services:
     privileged: true
     volumes:
       - .:/build
-      - /build/images
-      - ./images:/images:ro
+      - ./images:/build/images:ro
       - /dev:/dev
       - packer_cache:/root/packer_cache
     environment:

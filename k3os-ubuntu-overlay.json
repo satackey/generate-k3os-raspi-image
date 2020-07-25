@@ -1,12 +1,17 @@
 {
+    "variables": {
+        "k3os_rootfs_path": "{{ env `K3OS_ROOTFS_PATH` }}",
+        "k3os_system_config": "{{ env `K3OS_SYSTEM_CONFIG` }}",
+        "image_dest": "{{ env `IMAGE_DEST` }}"
+    },
     "builders": [
         {
             "type": "arm",
-            "file_urls" : ["file:///images/ubuntu-20.04-preinstalled-server-arm64+raspi.img"],
+            "file_urls" : ["file:///build/images/ubuntu-20.04-preinstalled-server-arm64+raspi.img"],
             "file_checksum_type": "none",
             "file_target_extension": "img",
             "image_build_method": "reuse",
-            "image_path": "k3os-ubuntu-overlay.img",
+            "image_path": "{{ user `image_dest` }}",
             "image_size": "4G",
             "image_type": "dos",
             "image_partitions": [
@@ -35,7 +40,7 @@
     "provisioners": [
         {
             "type": "file",
-            "source": "/images/k3os-rootfs-arm.tar.gz",
+            "source": "{{ user `k3os_rootfs_path` }}",
             "destination": "/root/k3os-rootfs-arm.tar.gz"
         },
         {
@@ -50,7 +55,7 @@
         },
         {
             "type": "file",
-            "source": "./k3os-system-config.yaml",
+            "source": "{{ user `k3os_system_config` }}",
             "destination": "/k3os/system/config.yaml"
         }
     ]

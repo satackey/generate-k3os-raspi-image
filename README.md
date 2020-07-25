@@ -10,4 +10,17 @@ $ # Configure.
 $ vim k3os-system-config.yaml
 
 $ make build
+
+$ # Specify the version.
+$ make VERSION=v0.10.0 build
+
+$ # Force rebuild.
+$ make rebuild
 ```
+
+## Requirements
+
+- Docker
+- curl
+- unxz
+- GNU Make
