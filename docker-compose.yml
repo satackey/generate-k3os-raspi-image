@@ -2,7 +2,7 @@ version: '3'
 
 services:
   packer_builder_arm:
-    build: '.'
+    image: mkaczanowski/packer-builder-arm
     privileged: true
     volumes:
       - .:/build
