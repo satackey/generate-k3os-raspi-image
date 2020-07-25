@@ -20,7 +20,7 @@ $ make rebuild
 
 ## Requirements
 
-- Docker
+- Docker / Docker Compose
 - curl
 - unxz
 - GNU Make
