@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build remove rebuild
 VERSION = v0.10.0
 
 images:
@@ -15,3 +15,8 @@ k3os-ubuntu-overlay.img: k3os-ubuntu-overlay.json images/k3os-rootfs-arm.tar.gz 
 	docker-compose run --rm packer_builder_arm build k3os-ubuntu-overlay.json
 
 build: k3os-ubuntu-overlay.img
+
+remove:
+	rm -f k3os-ubuntu-overlay.img
+
+rebuild: remove build
