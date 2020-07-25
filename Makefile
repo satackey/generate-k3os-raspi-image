@@ -15,7 +15,7 @@ $(K3OS_ROOTFS_PATH): images
 	rm -f $@
 	curl -L https://github.com/rancher/k3os/releases/download/$(VERSION)/k3os-rootfs-arm.tar.gz > $@
 
-$(IMAGE_DEST): k3os-ubuntu-overlay.json $(K3OS_ROOTFS_PATH) images/ubuntu-20.04-preinstalled-server-arm64+raspi.img
+$(IMAGE_DEST): k3os-ubuntu-overlay.json $(K3OS_SYSTEM_CONFIG) $(K3OS_ROOTFS_PATH) images/ubuntu-20.04-preinstalled-server-arm64+raspi.img
 	docker-compose run --rm \
 		-e K3OS_ROOTFS_PATH=$(K3OS_ROOTFS_PATH) \
 		-e K3OS_SYSTEM_CONFIG=$(K3OS_SYSTEM_CONFIG) \
